@@ -15,7 +15,6 @@ public class Problem1 {
             }
         }
 
-        //int oldindex = -1; //oldindex will be set to the last index value we tried, if we did not find the target
         int start = 0; //The leftmost boundary of our search
         int end = data.length - 1; //The rightmost boundary of our search
         int newindex = (start + end)/2; //Start at the midpoint
@@ -34,7 +33,10 @@ public class Problem1 {
                 }
                 return newindex; //Because the loop ends as soon as newindex is no longer a solution
 
-            } else if (data[newindex] > target){ //Limit search to upper section
+                /* I struggled with this problem for way too long, not understanding what I was doing wrong.
+                * I had the logic right here backwards, I used > when I should have used < when I initially wrote this
+                * part. I spent a lot of unnecessary time and I feel so stupid, but it works now at least. */
+            } else if (data[newindex] < target){ //Limit search to upper section
 
                 start = newindex + 1;
 
@@ -44,7 +46,6 @@ public class Problem1 {
                 end = newindex - 1;
 
             }
-            //oldindex = newindex;
             newindex = (start + end)/2;
 
         }
