@@ -32,4 +32,13 @@ public class Problem1Test {
             assertEquals(expected, actual);
         }
     }
+
+    @Test
+    public void testBinarySearchWithDuplicates() {
+        int[] input = {1, 8, 8, 9, 11};
+        int target = 8;
+        int actual = Problem1.binarySearch(input, target);
+        int expected = 1;
+        assertEquals(expected, actual);
+    }
 }
