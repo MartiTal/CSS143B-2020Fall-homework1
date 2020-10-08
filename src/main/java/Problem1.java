@@ -7,17 +7,17 @@ public class Problem1 {
             return -1;
         }
 
-        if (data.length == 1) {
+        /*if (data.length == 1) {
             if (data[0] == target) {
                 return 0;
             } else {
                 return -1;
             }
-        }
+        }    I found that once I fixed my logic error, I didn't need this part. */
 
         int start = 0; //The leftmost boundary of our search
         int end = data.length - 1; //The rightmost boundary of our search
-        int newindex = (start + end)/2; //Start at the midpoint
+        int newindex = (start + end)/2; //This is the value we will be comparing to target, it will represent all of the midpoint values
 
         /* I changed the while loop to keep running until the target cannot exist in between the start and end indexes
         * of our search */
@@ -50,7 +50,7 @@ public class Problem1 {
 
         }
 
-        //The final check, to see
+        //The final check, to see if either of our endpoints is actually equal to the target, otherwise it does not exist
         if (data[start] == target) {
             return start;
         } else if (data[end] == target) {
