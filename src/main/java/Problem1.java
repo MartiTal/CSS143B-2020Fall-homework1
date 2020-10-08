@@ -15,14 +15,14 @@ public class Problem1 {
             }
         }
 
-        int oldindex = -1; //oldindex will be set to the last index value we tried, if we did not find the target
-        int start = 0;
-        int end = data.length - 1;
+        //int oldindex = -1; //oldindex will be set to the last index value we tried, if we did not find the target
+        int start = 0; //The leftmost boundary of our search
+        int end = data.length - 1; //The rightmost boundary of our search
         int newindex = (start + end)/2; //Start at the midpoint
 
-        /* We want to continue running through the array until we are trying the same index over and over, meaning
-        the target value does not exist */
-        while (oldindex != newindex) {
+        /* I changed the while loop to keep running until the target cannot exist in between the start and end indexes
+        * of our search */
+        while (data[start] < target && data[end] > target) {
 
             if (data[newindex] == target) {
 
@@ -44,10 +44,19 @@ public class Problem1 {
                 end = newindex - 1;
 
             }
-            oldindex = newindex;
+            //oldindex = newindex;
             newindex = (start + end)/2;
 
         }
-        return -1;
+
+        //The final check, to see
+        if (data[start] == target) {
+            return start;
+        } else if (data[end] == target) {
+            return end;
+        } else {
+            return -1;
+        }
+
     }
 }
